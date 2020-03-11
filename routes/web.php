@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group([
     'prefix' => 'dashboard',
-    'namespace' => 'dashboard',
+    'namespace' => 'Dashboard',
     'as' => 'dashboard.'
 ], function () {
     Route::get('/', 'HomeController')->name('index');
