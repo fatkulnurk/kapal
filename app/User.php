@@ -18,8 +18,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'perusahaan_id'
     ];
+
+    protected $appends = ['perusahaan_accessor'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,4 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getPerusahaanAccessorAttribute()
+    {
+        return $this->perusahaan()->first();
+    }
+
+    public function perusahaan()
+    {
+        return $this->belongsTo(Perusahaan::class);
+    }
 }

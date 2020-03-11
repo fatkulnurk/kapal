@@ -9,7 +9,7 @@ class Perusahaan extends Model
     protected $table = 'perusahaan';
 
     protected $fillable = [
-        'id', 'nama', 'owner_id'
+        'id', 'nama'
     ];
 
     public function kapal()
@@ -21,9 +21,9 @@ class Perusahaan extends Model
     {
         return $this->hasMany(User::class);
     }
-
-    public function owner()
-    {
-        return $this->belongsTo(User::class);
-    }
+//
+//    public function owner()
+//    {
+//        return $this->belongsTo(User::class);
+//    }
 }

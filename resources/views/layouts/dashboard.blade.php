@@ -95,8 +95,16 @@
                          with font-awesome or any other icon font library -->
                     <li class="nav-header">Menu</li>
                     <li class="nav-item">
+                        <a href="{{ route('dashboard.index') }}" class="nav-link">
+                            <i class="nav-icon far fas fa-home"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('dashboard.kapal.index') }}" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <i class="nav-icon far fas fa-ship"></i>
                             <p>
                                 Kapal
                             </p>

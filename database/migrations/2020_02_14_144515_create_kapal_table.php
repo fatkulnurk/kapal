@@ -25,22 +25,22 @@ class CreateKapalTable extends Migration
             $table->string('jenis_kapal');
             $table->string('ukuran_panjang');
             $table->string('ukuran_panjang_satuan')
-                ->default('Mtr');
+                ->default('Mtr')->nullable();
             $table->string('ukuran_lebar');
             $table->string('ukuran_lebar_satuan')
-                ->default('"');
+                ->default('"')->nullable();
             $table->string('ukuran_tinggi');
             $table->string('ukuran_tinggi_satuan')
-                ->default('"');
+                ->default('"')->nullable();
             $table->string('ukuran_sarat');
             $table->string('ukuran_sarat_satuan')
-                ->default('"');
+                ->default('"')->nullable();
             $table->string('ukuran_gt');
             $table->string('ukuran_gt_satuan')
-                ->default('Ton');
+                ->default('Ton')->nullable();
 
-            $table->date('tanggal_masuk');
-            $table->date('tanggal_keluar');
+            $table->date('tanggal_masuk')->nullable();
+            $table->date('tanggal_keluar')->nullable();
 
             $table->timestamps();
         });

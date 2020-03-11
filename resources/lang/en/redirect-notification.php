@@ -43,5 +43,19 @@ return [
                 'info' => '',
             ]
         ],
+        'kapal' => [
+            'store' => [
+                'success' => 'Data Berhasil Disimpan.',
+                'error' => '',
+                'warning' => '',
+                'info' => '',
+            ],
+            'update' => [
+                'success' => '',
+                'error' => '',
+                'warning' => '',
+                'info' => '',
+            ]
+        ],
     ]
 ];

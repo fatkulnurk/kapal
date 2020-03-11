@@ -19,10 +19,10 @@ class CreatePerusahaanTable extends Migration
                 ->default(null);
 
             // user_id
-            $table->unsignedBigInteger('owner_id')->nullable();
-            $table->foreign('owner_id')
-                ->references('id')
-                ->on('users');
+//            $table->unsignedBigInteger('owner_id')->nullable();
+//            $table->foreign('owner_id')
+//                ->references('id')
+//                ->on('users');
 
             $table->timestamps();
         });

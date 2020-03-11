@@ -27,7 +27,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group([
     'prefix' => 'dashboard',
     'namespace' => 'Dashboard',
-    'as' => 'dashboard.'
+    'as' => 'dashboard.',
+    'middleware' => ['auth']
 ], function () {
     Route::get('/', 'HomeController')->name('index');
     Route::resource('/kapal', 'KapalController');

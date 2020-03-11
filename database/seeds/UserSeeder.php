@@ -23,13 +23,7 @@ class UserSeeder extends Seeder
                 'email' => 'manager_produksi@example.com',
                 'email_verified_at' => \Illuminate\Support\Carbon::now(),
                 'password' => \Illuminate\Support\Facades\Hash::make('12345678')
-            ],
-            [
-              'name' => 'Owner',
-              'email' => 'owner@example.com',
-                'email_verified_at' => \Illuminate\Support\Carbon::now(),
-              'password' => \Illuminate\Support\Facades\Hash::make('12345678')
-          ],
+            ]
         ];
 
         $user = \App\User::create($users[0]);
@@ -38,10 +32,6 @@ class UserSeeder extends Seeder
 
         $user = \App\User::create($users[1]);
         $user->assignRole(\App\Enums\RoleEnum::$managerProduksi);
-        unset($user);
-
-        $user = \App\User::create($users[2]);
-        $user->assignRole(\App\Enums\RoleEnum::$owner);
         unset($user);
     }
 }

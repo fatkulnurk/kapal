@@ -17,20 +17,24 @@
             <table id="example" class="table table-striped table-bordered">
                 <thead>
                 <tr>
+                    <th style="width: 20px">No</th>
                     <th>Nama Kapal</th>
                     <th>Jenis Kapal</th>
-                    <th>Option</th>
+                    <th style="width: 220px">Option</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Nama Kapalnya itu apa</td>
-                    <td>TANKER</td>
-                    <td>
-                        <button class="btn btn-info">Ubah Data</button>
-                        <button class="btn btn-danger">Hapus</button>
-                    </td>
-                </tr>
+                @foreach($kapal as $item)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->nama_kapal }}</td>
+                        <td>{{ $item->jenis_kapal }}</td>
+                        <td>
+                            <button class="btn btn-info">Ubah Data</button>
+                            <button class="btn btn-danger">Hapus</button>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
