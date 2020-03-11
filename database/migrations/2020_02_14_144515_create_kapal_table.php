@@ -20,6 +20,7 @@ class CreateKapalTable extends Migration
             $table->foreign('perusahaan_id')
                 ->references('id')
                 ->on('perusahaan');
+
             $table->string('nama_kapal');
             $table->string('jenis_kapal');
             $table->string('ukuran_panjang');

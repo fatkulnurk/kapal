@@ -13,11 +13,11 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+})->name('index');
+Route::get('/logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect()->route('index');
+})->name('logout-account');
 
 Auth::routes();
 
@@ -29,8 +29,10 @@ Route::group([
     'namespace' => 'dashboard',
     'as' => 'dashboard.'
 ], function () {
-    Route::get('/', 'HomeController');
+    Route::get('/', 'HomeController')->name('index');
     Route::resource('/kapal', 'KapalController');
     Route::resource('/transaksi', 'TransaksiController');
-//    Route::get('/kapal', 'KapalController@index');
+    Route::resource('/jenis-kapal', 'JenisKapalController');
+    Route::resource('/satuan', 'SatuanController');
+    Route::resource('/kategori-pekerjaan', 'KategoriPekerjaanController');
 });

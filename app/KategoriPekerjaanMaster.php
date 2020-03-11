@@ -5,10 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class JenisKapal extends Model
+class KategoriPekerjaanMaster extends Model
 {
-    protected $table = 'jenis_kapal';
-
+    protected $table = 'kategori_pekerjaan_masters';
     protected $fillable = ['id', 'nama'];
 
     public function setNamaAttribute($value)

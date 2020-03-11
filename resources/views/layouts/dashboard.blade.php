@@ -33,10 +33,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="{{ route('dashboard.index') }}" class="nav-link">Home</a>
             </li>
         </ul>
 
@@ -60,7 +57,7 @@
 {{--                </a>--}}
 {{--            </li>--}}
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="/logout">
                     Logout
                 </a>
             </li>
@@ -71,25 +68,25 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/dashboard" class="brand-link">
+        <a href="{{ route('dashboard.index') }}" class="brand-link">
             <img src="{{ asset('adminlte-3.0.2/dist/img/AdminLTELogo.png') }}"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ asset('adminlte-3.0.2/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
-            </div>
+{{--            <div class="user-panel mt-3 pb-3 mb-3 d-flex">--}}
+{{--                <div class="image">--}}
+{{--                    <img src="{{ asset('adminlte-3.0.2/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">--}}
+{{--                </div>--}}
+{{--                <div class="info">--}}
+{{--                    <a href="#" class="d-block">Alexander Pierce</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -114,16 +111,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{ route('dashboard.kategori-pekerjaan.index') }}" class="nav-link">
                             <i class="nav-icon far fa-image"></i>
                             <p>
-                                Gallery                                <span class="badge badge-info right">2</span>
-
+                                Kategori Pekerjaan
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{ route('dashboard.satuan.index') }}" class="nav-link">
                             <i class="nav-icon far fa-image"></i>
                             <p>
                                 Satuan
@@ -131,28 +127,22 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{ route('dashboard.jenis-kapal.index') }}" class="nav-link">
                             <i class="nav-icon far fa-image"></i>
                             <p>
                                 Jenis Kapal
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
-                            <p>
-                                Kapal
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon far fa-circle text-info"></i>
-                            <p>Informational</p>
-                        </a>
-                    </li>
-                </ul>
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="" class="nav-link">--}}
+{{--                            <i class="nav-icon far fa-image"></i>--}}
+{{--                            <p>--}}
+{{--                                Kapal--}}
+{{--                            </p>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -178,6 +168,8 @@
             </div><!-- /.container-fluid -->
         </section>
 
+        {{-- Notification --}}
+        @include('vendor.notification')
 
         <!-- Main content -->
         <section class="content" id="app">

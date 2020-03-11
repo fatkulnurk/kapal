@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Tambah Kapal')
+@section('title', 'Tambah Transaksi')
 
 @push('head')
     <link rel="stylesheet" href="{{ asset('adminlte-3.0.2/plugins/select2/css/select2.min.css') }}">

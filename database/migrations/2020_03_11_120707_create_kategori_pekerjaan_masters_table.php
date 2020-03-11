@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePerbaikanTable extends Migration
+class CreateKategoriPekerjaanMastersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePerbaikanTable extends Migration
      */
     public function up()
     {
-        Schema::create('perbaikan', function (Blueprint $table) {
+        Schema::create('kategori_pekerjaan_masters', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nama');
             $table->timestamps();
         });
-//        DB::statement("ALTER TABLE perbaikan AUTO_INCREMENT = 10000;");
     }
 
     /**
@@ -27,6 +27,6 @@ class CreatePerbaikanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('perbaikan');
+        Schema::dropIfExists('kategori_pekerjaan_masters');
     }
 }
