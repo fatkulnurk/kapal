@@ -12,7 +12,7 @@ class SatuanSeeder extends Seeder
     public function run()
     {
         $satuan = [
-            'kali', 'set', 'M2'
+            '"', 'kali', 'set', 'M2', 'Ton', 'Mtr', 'kali', 'hari'
         ];
 
         foreach ($satuan as $item) {

@@ -69,10 +69,9 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('dashboard.index') }}" class="brand-link">
-            <img src="{{ asset('adminlte-3.0.2/dist/img/AdminLTELogo.png') }}"
+            <img src="{{ asset('images/logo-light.png') }}"
                  alt="AdminLTE Logo"
-                 class="brand-image img-circle elevation-3"
-                 style="opacity: .8">
+                 class="brand-image">
             <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
         </a>
 
@@ -215,7 +214,7 @@
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 3.0.2
         </div>
-        <strong>Copyright &copy; {{ \Illuminate\Support\Carbon::now()->toDateString()  }} {{ config('app.name') }}.</strong> All rights
+        <strong>Copyright &copy; 2020 {{ config('app.name') }}.</strong> All rights
         reserved.
     </footer>
 

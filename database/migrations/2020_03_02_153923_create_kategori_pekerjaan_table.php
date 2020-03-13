@@ -22,6 +22,7 @@ class CreateKategoriPekerjaanTable extends Migration
                 ->on('perbaikan');
 
             $table->string('nama');
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

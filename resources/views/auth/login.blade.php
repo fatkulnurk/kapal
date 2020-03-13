@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', 'Login')
+
 @section('content')
     <div class="hold-transition login-page">
 
@@ -12,6 +14,11 @@
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
 
+                    <div class="alert alert-danger">
+                        Owner <br>
+                        email: owner@example.com <br>
+                        password: 12345678
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "datatables.net": "^1.10.20",
-        "datatables.net-dt": "^1.10.20"
+        "datatables.net-dt": "^1.10.20",
+        "vue-select": "^3.9.0"
     }
 }

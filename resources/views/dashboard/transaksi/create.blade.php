@@ -20,13 +20,13 @@
                 @csrf
                 <div class="form-group">
                     <label>Nama Perusahaan</label>
-                    <input type="text" class="form-control" disabled>
+                    <input type="text" class="form-control" value="{{ auth()->user()->perusahaan_accessor->nama }}" disabled>
                 </div>
 
                 <hr>
                 <transaksi-create-component></transaksi-create-component>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block">Simpan Data</button>
+                    <button class="btn btn-primary btn-block">Selanjutnya</button>
                 </div>
             </form>
         </div>

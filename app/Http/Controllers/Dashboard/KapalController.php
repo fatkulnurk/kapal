@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\JenisKapal;
 use App\Kapal;
+use App\Satuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,8 @@ class KapalController extends Controller
     public function create()
     {
         $jenisKapal = JenisKapal::select('nama')->get();
-        return view('dashboard.kapal.create', compact('jenisKapal'));
+        $satuan = Satuan::select('nama')->get();
+        return view('dashboard.kapal.create', compact('jenisKapal', 'satuan'));
     }
 
     public function store(Request $request)

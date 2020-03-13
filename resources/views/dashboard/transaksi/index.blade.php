@@ -17,20 +17,24 @@
             <table id="example" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>No Trx</th>
+                    <th style="width: 20px">No</th>
                     <th>Nama Kapal</th>
+                    <th>Tanggal Dibuat</th>
                     <th>Option</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>19912</td>
-                    <td>Nama Kapalnya itu apa</td>
-                    <td>
-                        <button class="btn btn-info">Ubah Data</button>
-                        <button class="btn btn-danger">Hapus</button>
-                    </td>
-                </tr>
+                @foreach($transaksi as $item)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>Nama Kapalnya itu apa</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>
+                            <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-info">Ubah Data</a>
+                            <button class="btn btn-danger">Hapus</button>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

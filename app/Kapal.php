@@ -23,4 +23,9 @@ class Kapal extends Model
     {
         return $this->belongsTo(Perusahaan::class);
     }
+
+    public function perbaikan()
+    {
+        return $this->hasMany(Perbaikan::class);
+    }
 }

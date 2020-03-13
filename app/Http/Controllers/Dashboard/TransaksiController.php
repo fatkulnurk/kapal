@@ -3,13 +3,23 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Perbaikan;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
     public function index()
     {
-        return view('dashboard.transaksi.index');
+        $user = Auth::user();
+        $transaksi = Perbaikan::with(['kapal.perusahaan', 'kategoriPekerjaan.uraianPekerjaan'])
+            ->whereHas('kapal', function (Builder $query) use ($user){
+                $query->where('perusahaan_id', $user->perusahaan_accessor->id);
+            })
+            ->get();
+
+        return view('dashboard.transaksi.index', compact('transaksi'));
     }
 
     public function create()
@@ -19,6 +29,21 @@ class TransaksiController extends Controller
 
     public function store(Request $request)
     {
-        return $request;
+        $request->validate([
+            'kapal_id' => 'required',
+        ]);
+        $perbaikan = Perbaikan::create($request->only(['kapal_id']));
+
+        return redirect()
+            ->route('dashboard.transaksi.show', $perbaikan->id);
+    }
+
+    public function show($id, Request $request)
+    {
+        $transaksi = Perbaikan::with(['kapal.perusahaan', 'kategoriPekerjaan.uraianPekerjaan'])->findOrFail($id);
+
+//        return $transaksi;
+
+        return view('dashboard.transaksi.show', compact('transaksi'));
     }
 }

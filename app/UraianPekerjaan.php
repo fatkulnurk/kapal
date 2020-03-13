@@ -9,7 +9,8 @@ class UraianPekerjaan extends Model
     protected $table = 'uraian_pekerjaan';
 
     protected $fillable = [
-        'kategori_pekerjaan_id', 'deskripsi',
+        'kategori_pekerjaan_id',
+        'deskripsi',
         'volume_nilai',
         'volume_satuan',
         'harga'

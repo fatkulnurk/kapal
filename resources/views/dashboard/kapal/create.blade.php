@@ -58,7 +58,12 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Satuan</label>
-                            <input type="text" class="form-control @error('ukuran_panjang_satuan') is-invalid @enderror" name="ukuran_panjang_satuan" value="{{ old('ukuran_panjang_satuan', 'Mtr') }}" required>
+                            <select class="form-control select2bs4" style="width: 100%;" name="ukuran_panjang_satuan" required>
+                                @foreach($satuan as $item)
+                                    <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
+{{--                            <input type="text" class="form-control @error('ukuran_panjang_satuan') is-invalid @enderror" name="ukuran_panjang_satuan" value="{{ old('ukuran_panjang_satuan', 'Mtr') }}" required>--}}
                             @error('ukuran_panjang_satuan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -84,7 +89,12 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Satuan</label>
-                            <input type="text" class="form-control @error('ukuran_lebar_satuan') is-invalid @enderror" name="ukuran_lebar_satuan" value="{{ old('ukuran_lebar_satuan') }}">
+                            <select class="form-control select2bs4" style="width: 100%;" name="ukuran_lebar_satuan" required>
+                                @foreach($satuan as $item)
+                                    <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
+{{--                            <input type="text" class="form-control @error('ukuran_lebar_satuan') is-invalid @enderror" name="ukuran_lebar_satuan" value="{{ old('ukuran_lebar_satuan') }}">--}}
                             @error('ukuran_lebar_satuan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -109,7 +119,12 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Satuan</label>
-                            <input type="text" class="form-control @error('ukuran_tinggi_satuan') is-invalid @enderror" name="ukuran_tinggi_satuan" value="{{ old('ukuran_tinggi_satuan') }}">
+                            <select class="form-control select2bs4" style="width: 100%;" name="ukuran_tinggi_satuan" required>
+                                @foreach($satuan as $item)
+                                    <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
+{{--                            <input type="text" class="form-control @error('ukuran_tinggi_satuan') is-invalid @enderror" name="ukuran_tinggi_satuan" value="{{ old('ukuran_tinggi_satuan') }}">--}}
                             @error('ukuran_tinggi_satuan')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -135,7 +150,12 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Satuan</label>
-                            <input type="text" class="form-control @error('ukuran_sarat_satuan') is-invalid @enderror" name="ukuran_sarat_satuan" value="{{ old('ukuran_sarat_satuan') }}">
+                            <select class="form-control select2bs4" style="width: 100%;" name="ukuran_sarat_satuan" required>
+                                @foreach($satuan as $item)
+                                    <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
+{{--                            <input type="text" class="form-control @error('ukuran_sarat_satuan') is-invalid @enderror" name="ukuran_sarat_satuan" value="{{ old('ukuran_sarat_satuan') }}">--}}
                             @error('ukuran_sarat_satuan')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -161,7 +181,13 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Satuan</label>
-                            <input class="form-control @error('ukuran_gt_satuan') is-invalid @enderror" name="ukuran_gt_satuan" value="{{ old('ukuran_gt_satuan', 'Ton') }}" required>
+
+                            <select class="form-control select2bs4" style="width: 100%;" name="ukuran_gt_satuan" required>
+                                @foreach($satuan as $item)
+                                    <option value="{{ $item->nama }}">{{ $item->nama }}</option>
+                                @endforeach
+                            </select>
+{{--                            <input class="form-control @error('ukuran_gt_satuan') is-invalid @enderror" name="ukuran_gt_satuan" value="{{ old('ukuran_gt_satuan', 'Ton') }}" required>--}}
                             @error('ukuran_gt_satuan')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -178,3 +204,24 @@
         </form>
     </div>
 @endsection
+
+@push('head')
+    <link rel="stylesheet" href="{{ asset('adminlte-3.0.2/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte-3.0.2/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+@endpush
+
+@push('javascript')
+    <script src="{{ asset('adminlte-3.0.2/plugins/select2/js/select2.full.min.js') }}"></script>
+
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+    </script>
+@endpush

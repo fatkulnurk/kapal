@@ -15,6 +15,12 @@ class CreatePerbaikanTable extends Migration
     {
         Schema::create('perbaikan', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->unsignedBigInteger('kapal_id');
+            $table->foreign('kapal_id')
+                ->references('id')
+                ->on('kapal');
+
             $table->timestamps();
         });
 //        DB::statement("ALTER TABLE perbaikan AUTO_INCREMENT = 10000;");

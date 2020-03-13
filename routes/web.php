@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
+
+//    return view('welcome');
 })->name('index');
 Route::get('/logout', function () {
     \Illuminate\Support\Facades\Auth::logout();
@@ -33,6 +35,14 @@ Route::group([
     Route::get('/', 'HomeController')->name('index');
     Route::resource('/kapal', 'KapalController');
     Route::resource('/transaksi', 'TransaksiController');
+    Route::get('/transaksi/{id}/tambah-kategori-pekerjaan', 'Transaksi\KategoriPekerjaanController@create')
+        ->name('transaksi.kategori-pekerjaan.create');
+    Route::post('/transaksi/{id}/tambah-kategori-pekerjaan', 'Transaksi\KategoriPekerjaanController@store')
+        ->name('transaksi.kategori-pekerjaan.store');
+    Route::get('/transaksi/{id}/kategori-pekerjaan/{kategori_id}/tambah-uraian', 'Transaksi\UraianController@create')
+        ->name('transaksi.uraian.create');
+    Route::post('/transaksi/{id}/kategori-pekerjaan/{kategori_id}/tambah-uraian', 'Transaksi\UraianController@store')
+        ->name('transaksi.uraian.store');
     Route::resource('/jenis-kapal', 'JenisKapalController');
     Route::resource('/satuan', 'SatuanController');
     Route::resource('/kategori-pekerjaan', 'KategoriPekerjaanController');

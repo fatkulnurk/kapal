@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Perbaikan extends Model
 {
-    protected $table = 'pekerjaan';
+    protected $table = 'perbaikan';
 
-    protected $fillable = [];
+    protected $fillable = ['kapal_id'];
+
+    public function kapal()
+    {
+        return $this->belongsTo(Kapal::class);
+    }
+
+    public function kategoriPekerjaan()
+    {
+        return $this->hasMany(KategoriPekerjaan::class);
+    }
 }
