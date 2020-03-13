@@ -30,7 +30,7 @@
                         <td>Nama Kapalnya itu apa</td>
                         <td>{{ $item->created_at }}</td>
                         <td>
-                            <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-info">Ubah Data</a>
+                            <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-info">Ubah Data </a>
                             <button class="btn btn-danger">Hapus</button>
                         </td>
                     </tr>
