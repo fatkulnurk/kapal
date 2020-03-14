@@ -18,7 +18,7 @@
                 <thead>
                 <tr>
                     <th style="width: 20px">No</th>
-                    <th style="width: 20px">Trx ID</th>
+                    <th style="width: 70px">Trx ID</th>
                     <th>Nama Kapal</th>
                     <th>Tanggal Dibuat</th>
                     <th style="width: 300px">Opsi</th>
