@@ -55,22 +55,24 @@ class JenisKapalController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $jenisKapal = JenisKapal::findOrFail($id);
+        return view('dashboard.jenis-kapal.edit', compact('jenisKapal'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $jenisKapal = JenisKapal::findOrFail($id);
+        return view('dashboard.jenis-kapal.edit', compact('jenisKapal'));
     }
 
     /**
@@ -78,21 +80,34 @@ class JenisKapalController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:191'
+        ]);
+
+        $data = JenisKapal::findOrFail($id);
+        $data->update($request->only('nama'));
+
+        return redirect()->route('dashboard.jenis-kapal.index')
+            ->with('success', __('redirect-notification.dashboard.jenis-kapal.update.success'))
+            ->with('data', compact('data'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $data = JenisKapal::findOrFail($id);
+        $data->delete();
+
+        return redirect()->route('dashboard.jenis-kapal.index')
+            ->with('success', __('redirect-notification.dashboard.jenis-kapal.delete.success'));
     }
 }

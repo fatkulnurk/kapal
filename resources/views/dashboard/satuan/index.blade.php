@@ -14,12 +14,12 @@
         </div>
         <div class="card-body">
 
-            <table id="example" class="table table-striped table-bordered">
+            <table id="table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th style="width: 20px">No</th>
                     <th>Nama</th>
-                    <th style="width: 220px">Opsi</th>
+                    <th style="width: 300px">Opsi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,8 +28,18 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama }}</td>
                         <td class="text-center">
-                            <button class="btn btn-info">Ubah Data</button>
-                            <button class="btn btn-danger">Hapus</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ route('dashboard.satuan.edit', $item->id) }}" class="btn btn-info btn-block">Ubah Data</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <form action="{{ route('dashboard.satuan.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-block" onclick="submitForm(event)">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -44,5 +54,15 @@
         $(document).ready(function () {
             $('table').DataTable();
         });
+
+        function submitForm(event){
+            var confirmation = confirm("Yakin ingin menghapus data ?") ;
+
+            if (!confirmation)
+            {
+                event.preventDefault() ;
+                window.alert('Penghapusan dibatalkan.')
+            }
+        }
     </script>
 @endpush

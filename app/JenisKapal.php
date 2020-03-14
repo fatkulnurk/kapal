@@ -11,8 +11,8 @@ class JenisKapal extends Model
 
     protected $fillable = ['id', 'nama'];
 
-    public function setNamaAttribute($value)
-    {
-        $this->attributes['nama'] = Str::lower($value);
-    }
+//    public function setNamaAttribute($value)
+//    {
+//        $this->attributes['nama'] = Str::lower($value);
+//    }
 }

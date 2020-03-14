@@ -53,22 +53,26 @@ class SatuanController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $satuan = Satuan::findOrFail($id);
+
+        return view('dashboard.satuan.edit', compact('satuan'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $satuan = Satuan::findOrFail($id);
+
+        return view('dashboard.satuan.edit', compact('satuan'));
     }
 
     /**
@@ -76,21 +80,35 @@ class SatuanController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:191'
+        ]);
+
+        $satuan = Satuan::findOrFail($id);
+
+        $satuan->update($request->only('nama'));
+
+        return redirect()->route('dashboard.satuan.index')
+            ->with('success', __('redirect-notification.dashboard.satuan.update.success'));
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $data = Satuan::findOrFail($id);
+        $data->delete();
+
+        return redirect()->route('dashboard.satuan.index')
+            ->with('success', __('redirect-notification.dashboard.satuan.delete.success'));
     }
 }

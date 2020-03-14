@@ -20,7 +20,7 @@
                     <th style="width: 20px">No</th>
                     <th>Nama Kapal</th>
                     <th>Jenis Kapal</th>
-                    <th style="width: 220px">Option</th>
+                    <th style="width: 300px">Opsi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,9 +29,19 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama_kapal }}</td>
                         <td>{{ $item->jenis_kapal }}</td>
-                        <td>
-                            <button class="btn btn-info">Ubah Data</button>
-                            <button class="btn btn-danger">Hapus</button>
+                        <td class="text-center">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ route('dashboard.kapal.edit', $item->id) }}" class="btn btn-info btn-block">Ubah Data</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <form action="{{ route('dashboard.kapal.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-block" onclick="submitForm(event)">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -47,5 +57,15 @@
         $(document).ready(function () {
             $('table').DataTable();
         });
+
+        function submitForm(event){
+            var confirmation = confirm("Yakin ingin menghapus data, Semua Data transaksi untuk KAPAL INI akan di hapus ?") ;
+
+            if (!confirmation)
+            {
+                event.preventDefault() ;
+                window.alert('Penghapusan dibatalkan.')
+            }
+        }
     </script>
 @endpush

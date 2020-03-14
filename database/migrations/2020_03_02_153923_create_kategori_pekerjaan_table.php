@@ -19,7 +19,8 @@ class CreateKategoriPekerjaanTable extends Migration
             $table->unsignedBigInteger('perbaikan_id');
             $table->foreign('perbaikan_id')
                 ->references('id')
-                ->on('perbaikan');
+                ->on('perbaikan')
+                ->onDelete('cascade');
 
             $table->string('nama');
             $table->text('deskripsi')->nullable();

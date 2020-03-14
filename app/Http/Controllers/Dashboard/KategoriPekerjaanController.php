@@ -56,22 +56,26 @@ class KategoriPekerjaanController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $kategoriPekerjaanMaster = KategoriPekerjaanMaster::findOrFail($id);
+
+        return view('dashboard.kategori-pekerjaan.edit', compact('kategoriPekerjaanMaster'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $kategoriPekerjaanMaster = KategoriPekerjaanMaster::findOrFail($id);
+
+        return view('dashboard.kategori-pekerjaan.edit', compact('kategoriPekerjaanMaster'));
     }
 
     /**
@@ -79,21 +83,33 @@ class KategoriPekerjaanController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:191'
+        ]);
+
+        $kategoriPekerjaanMaster = KategoriPekerjaanMaster::findOrFail($id);
+        $kategoriPekerjaanMaster->update($request->only('nama'));
+
+        return redirect()->route('dashboard.kategori-pekerjaan.index')
+            ->with('success', __('redirect-notification.dashboard.kategori-pekerjaan.update.success'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $data = KategoriPekerjaanMaster::findOrFail($id);
+        $data->delete();
+
+        return redirect()->route('dashboard.kategori-pekerjaan.index')
+            ->with('success', __('redirect-notification.dashboard.kategori-pekerjaan.delete.success'));
     }
 }

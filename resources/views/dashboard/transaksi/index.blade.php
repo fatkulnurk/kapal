@@ -20,7 +20,7 @@
                     <th style="width: 20px">No</th>
                     <th>Nama Kapal</th>
                     <th>Tanggal Dibuat</th>
-                    <th>Option</th>
+                    <th style="width: 300px">Opsi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,9 +29,20 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>Nama Kapalnya itu apa</td>
                         <td>{{ $item->created_at }}</td>
-                        <td>
-                            <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-info">Ubah Data </a>
-                            <button class="btn btn-danger">Hapus</button>
+                        <td class="text-center">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-info btn-block">Ubah Data</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <form action="{{ route('dashboard.transaksi.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-block" onclick="submitForm(event)">Hapus</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -47,5 +58,15 @@
         $(document).ready(function () {
             $('table').DataTable();
         });
+
+        function submitForm(event){
+            var confirmation = confirm("Yakin ingin menghapus data ?") ;
+
+            if (!confirmation)
+            {
+                event.preventDefault() ;
+                window.alert('Penghapusan dibatalkan.')
+            }
+        }
     </script>
 @endpush

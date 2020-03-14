@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Update Satuan')
+@section('title', 'Tambah Kategori Pekerjaan')
 
 @section('content')
     <div class="card">
@@ -11,13 +11,12 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('dashboard.satuan.update', $satuan->id) }}" method="post">
+            <form action="{{ route('dashboard.kategori-pekerjaan.update', $kategoriPekerjaanMaster->id) }}" method="post">
                 @csrf
                 @method('PUT')
-
                 <div class="form-group">
-                    <label>Nama Satuan</label>
-                    <input type="text" class="form-control" name="nama" value="{{ old('nama', $satuan->nama) }}" required>
+                    <label>Nama Kategori Pekerjaan</label>
+                    <input type="text" class="form-control" name="nama" value="{{ old('nama', $kategoriPekerjaanMaster->nama) }}" required>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary btn-block">Update Data</button>

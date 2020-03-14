@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Kapal;
 use App\Perbaikan;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -45,5 +46,14 @@ class TransaksiController extends Controller
 //        return $transaksi;
 
         return view('dashboard.transaksi.show', compact('transaksi'));
+    }
+
+    public function destroy($id)
+    {
+        $data = Perbaikan::findOrFail($id);
+        $data->delete();
+        return redirect()
+            ->route('dashboard.transaksi.index')
+            ->with('success', __('redirect-notification.dashboard.transaksi.delete.success'));
     }
 }

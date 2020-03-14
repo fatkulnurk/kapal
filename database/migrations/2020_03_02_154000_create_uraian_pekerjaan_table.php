@@ -19,7 +19,8 @@ class CreateUraianPekerjaanTable extends Migration
             $table->unsignedBigInteger('kategori_pekerjaan_id');
             $table->foreign('kategori_pekerjaan_id')
                 ->references('id')
-                ->on('kategori_pekerjaan');
+                ->on('kategori_pekerjaan')
+                ->onDelete('cascade');
 
             $table->text('deskripsi');
 

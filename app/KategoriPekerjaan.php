@@ -9,10 +9,10 @@ class KategoriPekerjaan extends Model
 {
     protected $table = 'kategori_pekerjaan';
     protected $fillable = ['id', 'nama', 'deskripsi', 'perbaikan_id'];
-    public function setNamaAttribute($value)
-    {
-        $this->attributes['nama'] = Str::lower($value);
-    }
+//    public function setNamaAttribute($value)
+//    {
+//        $this->attributes['nama'] = Str::lower($value);
+//    }
 
     public function perbaikan()
     {

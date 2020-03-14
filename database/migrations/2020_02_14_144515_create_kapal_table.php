@@ -19,7 +19,8 @@ class CreateKapalTable extends Migration
             $table->unsignedBigInteger('perusahaan_id');
             $table->foreign('perusahaan_id')
                 ->references('id')
-                ->on('perusahaan');
+                ->on('perusahaan')
+                ->onDelete('cascade');
 
             $table->string('nama_kapal');
             $table->string('jenis_kapal');

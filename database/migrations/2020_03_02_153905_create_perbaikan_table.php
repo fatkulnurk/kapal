@@ -19,9 +19,11 @@ class CreatePerbaikanTable extends Migration
             $table->unsignedBigInteger('kapal_id');
             $table->foreign('kapal_id')
                 ->references('id')
-                ->on('kapal');
+                ->on('kapal')
+                ->onDelete('cascade');
 
             $table->timestamps();
+
         });
 //        DB::statement("ALTER TABLE perbaikan AUTO_INCREMENT = 10000;");
     }
