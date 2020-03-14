@@ -14,6 +14,7 @@ class KategoriPekerjaanController extends Controller
 {
     public function create($id, Request $request)
     {
+        $satuan = Satuan::get();
         $transaksi = Perbaikan::findOrFail($id);
         $kategoriPekerjaanMasters = KategoriPekerjaanMaster::select('nama')->get();
 
