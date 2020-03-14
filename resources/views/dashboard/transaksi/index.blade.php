@@ -18,6 +18,7 @@
                 <thead>
                 <tr>
                     <th style="width: 20px">No</th>
+                    <th style="width: 20px">Trx ID</th>
                     <th>Nama Kapal</th>
                     <th>Tanggal Dibuat</th>
                     <th style="width: 300px">Opsi</th>
@@ -27,7 +28,8 @@
                 @foreach($transaksi as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>Nama Kapalnya itu apa</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->kapal->nama_kapal }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td class="text-center">
 
