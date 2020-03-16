@@ -12,10 +12,11 @@
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
+//    return redirect()->route('login');
 
-//    return view('welcome');
+    return view('welcome');
 })->name('index');
+
 Route::get('/logout', function () {
     \Illuminate\Support\Facades\Auth::logout();
     return redirect()->route('index');
