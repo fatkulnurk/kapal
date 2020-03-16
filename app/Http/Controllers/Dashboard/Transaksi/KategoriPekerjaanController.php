@@ -30,6 +30,6 @@ class KategoriPekerjaanController extends Controller
             'perbaikan_id' => $transaksi->id
         ]);
 
-        return redirect()->route('dashboard.transaksi.show', $transaksi->id);
+        return redirect()->route('dashboard.transaksi.edit', $transaksi->id);
     }
 }

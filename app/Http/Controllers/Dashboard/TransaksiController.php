@@ -48,6 +48,15 @@ class TransaksiController extends Controller
         return view('dashboard.transaksi.show', compact('transaksi'));
     }
 
+    public function edit($id, Request $request)
+    {
+        $transaksi = Perbaikan::with(['kapal.perusahaan', 'kategoriPekerjaan.uraianPekerjaan'])->findOrFail($id);
+
+//        return $transaksi;
+
+        return view('dashboard.transaksi.edit', compact('transaksi'));
+    }
+
     public function destroy($id)
     {
         $data = Perbaikan::findOrFail($id);

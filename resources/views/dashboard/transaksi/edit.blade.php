@@ -12,54 +12,50 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <table class="table table-borderless">
+                <label>Nama Perusahaan</label>
+                <input type="text" class="form-control" value="{{ $transaksi->kapal->perusahaan->nama }}" disabled>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nama Kapal</label>
+                        <input type="text" class="form-control" value="{{ $transaksi->kapal->nama_kapal }}" disabled>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Jenis Kapal</label>
+                        <input type="text" class="form-control" value="{{ $transaksi->kapal->jenis_kapal }}" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <table class="table">
                     <tr>
-                        <td style="width: 170px">NAMA PERUSAHAAN</td>
-                        <td style="width: 10px">:</td>
-                        <td>{{ $transaksi->kapal->perusahaan->nama }}</td>
+                        <td style="width: 75px">Panjang</td>
+                        <td style="width: 5px">:</td>
+                        <td>{{ $transaksi->kapal->ukuran_panjang }}</td>
                     </tr>
-                    <tr style="border-top: solid #e2e3e5 1px">
-                        <td style="width: 170px">NAMA KAPAL</td>
-                        <td style="width: 10px">:</td>
-                        <td>{{ $transaksi->kapal->nama_kapal }}</td>
-                    </tr>
-                    <tr style="border-top: solid #e2e3e5 1px">
-                        <td>JENIS KAPAL</td>
+                    <tr>
+                        <td>Lebar</td>
                         <td>:</td>
-                        <td>{{ $transaksi->kapal->jenis_kapal }}</td>
+                        <td>{{ $transaksi->kapal->ukuran_lebar }}</td>
                     </tr>
-                    <tr style="border-top: solid #e2e3e5 1px">
-                        <td>UKURAN UTAMA</td>
+                    <tr>
+                        <td>Tinggi</td>
                         <td>:</td>
-                        <td>
-                            <table class="table">
-                                <tr>
-                                    <td style="width: 75px">Panjang</td>
-                                    <td style="width: 5px">:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_panjang }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>Lebar</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_lebar }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>Tinggi</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_tinggi }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>Sarat</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_sarat }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>GT</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_gt }}</td>
-                                </tr>
-                            </table>
-                        </td>
+                        <td>{{ $transaksi->kapal->ukuran_tinggi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sarat</td>
+                        <td>:</td>
+                        <td>{{ $transaksi->kapal->ukuran_sarat }}</td>
+                    </tr>
+                    <tr>
+                        <td>GT</td>
+                        <td>:</td>
+                        <td>{{ $transaksi->kapal->ukuran_gt }}</td>
                     </tr>
                 </table>
             </div>
@@ -77,7 +73,6 @@
                         <th scope="col">Biaya</th>
                     </tr>
                     </thead>
-                    <?php $total = 0; ?>
                     @foreach($transaksi->kategoriPekerjaan as $kategoriPekerjaan)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -102,18 +97,23 @@
                                     <td>{{ $uraianPekerjaan->volume_nilai }}</td>
                                     <td>{{ $uraianPekerjaan->volume_satuan }}</td>
                                     <td>{{ currency_formatter($uraianPekerjaan->harga) }}</td>
-                                    <?php $total += $uraianPekerjaan->volume_nilai * $uraianPekerjaan->harga; ?>
                                     <td>{{ currency_formatter(($uraianPekerjaan->volume_nilai * $uraianPekerjaan->harga)) }}</td>
                                 </tr>
                             @endforeach
+                        <tr>
+                            <td colspan="6">
+                                <div class="form-group text-right">
+                                    <a href="{{ route('dashboard.transaksi.uraian.create', [$transaksi->id, $kategoriPekerjaan->id]) }}" class="btn btn-default btn-outline-primary">Tambah Uraian</a>
+                                </div>
+                            </td>
+                        </tr>
                     @endforeach
-                    <tr>
-                        <td colspan="4" class="text-right">Total Biaya</td>
-                        <td colspan="2">Rp {{ currency_formatter($total) }}</td>
-                    </tr>
                     <tbody>
                     </tbody>
                 </table>
+            </div>
+            <div class="form-group">
+                <a href="{{ route('dashboard.transaksi.kategori-pekerjaan.create', $transaksi->id) }}" class="btn btn-primary btn-block">Tambah Kategori</a>
             </div>
         </div>
     </div>

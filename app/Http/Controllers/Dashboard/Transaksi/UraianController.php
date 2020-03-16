@@ -42,6 +42,6 @@ class UraianController extends Controller
             'harga' =>  $request->input('harga')
         ]);
 
-        return redirect()->route('dashboard.transaksi.show', $transaksi->id);
+        return redirect()->route('dashboard.transaksi.edit', $transaksi->id);
     }
 }

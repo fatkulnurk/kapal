@@ -34,10 +34,13 @@
                         <td class="text-center">
 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-info btn-block">Ubah Data</a>
+                                <div class="col-md-4">
+                                    <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-success btn-block">Detail</a>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <a href="{{ route('dashboard.transaksi.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
+                                </div>
+                                <div class="col-md-4">
                                     <form action="{{ route('dashboard.transaksi.destroy', $item->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
