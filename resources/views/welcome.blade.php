@@ -64,7 +64,7 @@
         <div class="intro-text">
             <div class="intro-lead-in">Informasi Reparasi Kapal yang Cepat dan Praktis</div>
             <div class="intro-heading">e-Calculation</div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger login" href="#services">Login</a>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger login" href="{{ route('login') }}">Login</a>
         </div>
     </div>
 </header>
