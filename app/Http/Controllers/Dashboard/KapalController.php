@@ -63,7 +63,7 @@ class KapalController extends Controller
         $jenisKapal = JenisKapal::select('nama')->get();
         $satuan = Satuan::select('nama')->get();
 
-        return view('dashboard.kapal.edit', compact('kapal', 'jenisKapal', 'satuan'));
+        return view('dashboard.kapal.show', compact('kapal', 'jenisKapal', 'satuan'));
     }
 
     public function edit($id, Request $request)

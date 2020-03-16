@@ -20,7 +20,7 @@
                     <th style="width: 20px">No</th>
                     <th>Nama Kapal</th>
                     <th>Jenis Kapal</th>
-                    <th style="width: 300px">Opsi</th>
+                    <th style="width: 350px">Opsi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,10 +31,13 @@
                         <td>{{ $item->jenis_kapal }}</td>
                         <td class="text-center">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <a href="{{ route('dashboard.kapal.edit', $item->id) }}" class="btn btn-info btn-block">Ubah Data</a>
+                                <div class="col-md-4">
+                                    <a href="{{ route('dashboard.kapal.show', $item->id) }}" class="btn btn-success btn-block">Detail</a>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <a href="{{ route('dashboard.kapal.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
+                                </div>
+                                <div class="col-md-4">
                                     <form action="{{ route('dashboard.kapal.destroy', $item->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
