@@ -9,3 +9,16 @@ if (!function_exists('currency_formatter')) {
         return number_format($nominal,2,",",".");
     }
 }
+
+if (!function_exists('random_perbaikan')) {
+    function random_perbaikan()
+    {
+        try {
+            $data = \Ramsey\Uuid\Uuid::getFactory()->uuid4();
+        } catch (Exception $e) {
+            $data = \Illuminate\Support\Str::random(30);
+        }
+
+        return md5($data);
+    }
+}

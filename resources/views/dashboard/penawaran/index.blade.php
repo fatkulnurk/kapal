@@ -16,42 +16,41 @@
         </div>
         <div class="card-body">
 
-            <table id="example" class="table table-striped table-bordered">
+            <table id="example" class="table table-striped table-bordered table-responsive-lg">
                 <thead>
                 <tr>
                     <th style="width: 20px">No</th>
                     <th style="width: 70px">Trx ID</th>
                     <th>Nama Kapal</th>
-                    <th>Tanggal Dibuat</th>
+                    <th>Harga Total</th>
+                    <th>Jumlah Penawaran</th>
+                    <th>Status</th>
+                    <th>Waktu</th>
                     <th style="width: 300px">Opsi</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($transaksi as $item)
+                @foreach($penawaran as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nomor_transaksi }}</td>
-                        <td>{{ $item->kapal->nama_kapal }}</td>
+                        <td><a href="{{ route('dashboard.transaksi.show', $item->perbaikan->id) }}">{{ $item->perbaikan->nomor_transaksi }}</a></td>
+                        <td>{{ $item->perbaikan->kapal->nama_kapal }}</td>
+                        <td>{{ $item->perbaikan->total_biaya }}</td>
+                        <td>{{ $item->jumlah_penawaran }}%</td>
+                        <td>{{ $item->verified }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td class="text-center">
 
                             <div class="row">
                                 @hasanyrole(\App\Enums\RoleEnum::$owner.'|'.\App\Enums\RoleEnum::$managerProduksi)
-                                <div class="col-md-4">
-                                    <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-success btn-block">Detail</a>
+                                <div class="col-md-6">
+                                    <a href="{{ route('dashboard.penawaran.show', $item->id) }}" class="btn btn-success btn-block">Detail</a>
                                 </div>
                                 @endhasanyrole
 
                                 @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)
-                                <div class="col-md-4">
-                                    <a href="{{ route('dashboard.transaksi.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
-                                </div>
-                                <div class="col-md-4">
-                                    <form action="{{ route('dashboard.transaksi.destroy', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-block" onclick="submitForm(event)">Hapus</button>
-                                    </form>
+                                <div class="col-md-6">
+                                    <a href="{{ route('dashboard.penawaran.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
                                 </div>
                                 @endhasanyrole
                             </div>

@@ -26,4 +26,8 @@ class Perusahaan extends Model
 //    {
 //        return $this->belongsTo(User::class);
 //    }
+    public function penawaran()
+    {
+        return $this->hasMany(Penawaran::class);
+    }
 }

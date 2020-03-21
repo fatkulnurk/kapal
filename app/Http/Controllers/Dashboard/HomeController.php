@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Enums\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Kapal;
 use App\Perbaikan;
@@ -15,6 +16,11 @@ class HomeController extends Controller
     public function __invoke()
     {
         $user = Auth::user();
+
+        // jika biaya kalkulasi dashboard kosong
+        if ($user->hasRole(RoleEnum::$biayaKalkulasi)) {
+            return view('dashboard.index');
+        }
 
         $jumlahKapal = Kapal::where('perusahaan_id', $user->perusahaan_accessor->id)
             ->count('id');

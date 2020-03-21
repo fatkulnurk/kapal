@@ -11,7 +11,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $role = \Spatie\Permission\Models\Role::create(['name' => \App\Enums\RoleEnum::$admin]);
+        $role = \Spatie\Permission\Models\Role::create(['name' => \App\Enums\RoleEnum::$biayaKalkulasi]); // biaya kalkulasi
         $role = \Spatie\Permission\Models\Role::create(['name' => \App\Enums\RoleEnum::$managerProduksi]);
         $role = \Spatie\Permission\Models\Role::create(['name' => \App\Enums\RoleEnum::$owner]);
     }

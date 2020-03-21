@@ -19,6 +19,16 @@
                         email: owner@example.com <br>
                         password: 12345678
                     </div>
+                    <div class="alert alert-warning">
+                        Biaya Kalkulasi <br>
+                        email: biaya_kalkulasi@example.com <br>
+                        password: 12345678
+                    </div>
+                    <div class="alert alert-info">
+                        manager produksi <br>
+                        email: manager_produksi@example.com <br>
+                        password: 12345678
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

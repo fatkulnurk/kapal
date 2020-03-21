@@ -16,6 +16,9 @@ class CreatePerbaikanTable extends Migration
         Schema::create('perbaikan', function (Blueprint $table) {
             $table->bigIncrements('id');
 
+            $table->string('nomor_transaksi', 120)->unique();
+            $table->string('harga_setelah_penawaran')->nullable();
+
             $table->unsignedBigInteger('kapal_id');
             $table->foreign('kapal_id')
                 ->references('id')

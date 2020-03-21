@@ -118,6 +118,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('dashboard.penawaran.index') }}" class="nav-link">
+                            <i class="nav-icon far fas fa-wallet"></i>
+                            <p>
+                                Penawaran
+                            </p>
+                        </a>
+                    </li>
+
+                    @hasanyrole(\App\Enums\RoleEnum::$biayaKalkulasi)
+                    <li class="nav-item">
                         <a href="{{ route('dashboard.kategori-pekerjaan.index') }}" class="nav-link">
                             <i class="nav-icon far fa-image"></i>
                             <p>
@@ -149,7 +159,8 @@
 {{--                            </p>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-{{--                </ul>--}}
+                    @endhasanyrole
+                </ul>
             </nav>
             <!-- /.sidebar-menu -->
         </div>

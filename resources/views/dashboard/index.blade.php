@@ -4,6 +4,13 @@
 
 @section('content')
 
+    @hasanyrole(\App\Enums\RoleEnum::$biayaKalkulasi)
+    <div class="card">
+        <div class="card-body">
+            Selamat datang
+        </div>
+    </div>
+    @else
     <div class="row">
         <div class="col-md-6">
             <!-- small box -->
@@ -50,4 +57,5 @@
 {{--            </div>--}}
 {{--        </div>--}}
     </div>
+    @endhasanyrole
 @endsection

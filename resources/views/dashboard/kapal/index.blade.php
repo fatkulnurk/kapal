@@ -8,9 +8,11 @@
         <div class="card-header">
             <h3 class="card-title">@yield('title')</h3>
 
+            @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)
             <div class="card-tools">
-                <a href="{{ route('dashboard.kapal.create') }}" class="btn btn-default">Tambah Data</a>
+                <a href="{{ route('dashboard.kapal.create') }}" class="btn btn-primary">Tambah Data</a>
             </div>
+            @endhasanyrole
         </div>
         <div class="card-body">
 
@@ -31,9 +33,13 @@
                         <td>{{ $item->jenis_kapal }}</td>
                         <td class="text-center">
                             <div class="row">
+                                @hasanyrole(\App\Enums\RoleEnum::$owner.'|'.\App\Enums\RoleEnum::$managerProduksi)
                                 <div class="col-md-4">
                                     <a href="{{ route('dashboard.kapal.show', $item->id) }}" class="btn btn-success btn-block">Detail</a>
                                 </div>
+                                @endhasanyrole
+
+                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)
                                 <div class="col-md-4">
                                     <a href="{{ route('dashboard.kapal.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
                                 </div>
@@ -44,6 +50,7 @@
                                         <button class="btn btn-danger btn-block" onclick="submitForm(event)">Hapus</button>
                                     </form>
                                 </div>
+                                @endhasanyrole
                             </div>
                         </td>
                     </tr>

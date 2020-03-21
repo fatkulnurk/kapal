@@ -11,6 +11,8 @@
 |
 */
 
+use App\Enums\RoleEnum;
+
 Route::get('/', function () {
 //    return redirect()->route('login');
 
@@ -35,7 +37,9 @@ Route::group([
 ], function () {
     Route::get('/', 'HomeController')->name('index');
     Route::resource('/kapal', 'KapalController');
+
     Route::resource('/transaksi', 'TransaksiController');
+
     Route::get('/transaksi/{id}/tambah-kategori-pekerjaan', 'Transaksi\KategoriPekerjaanController@create')
         ->name('transaksi.kategori-pekerjaan.create');
     Route::post('/transaksi/{id}/tambah-kategori-pekerjaan', 'Transaksi\KategoriPekerjaanController@store')
@@ -44,7 +48,16 @@ Route::group([
         ->name('transaksi.uraian.create');
     Route::post('/transaksi/{id}/kategori-pekerjaan/{kategori_id}/tambah-uraian', 'Transaksi\UraianController@store')
         ->name('transaksi.uraian.store');
-    Route::resource('/jenis-kapal', 'JenisKapalController');
-    Route::resource('/satuan', 'SatuanController');
-    Route::resource('/kategori-pekerjaan', 'KategoriPekerjaanController');
+    Route::post('/transaksi/{id}/tambah-penawaran', 'Transaksi\AjukanPenawaranController@store')
+        ->name('transaksi.ajukan-penawaran.store');
+
+    Route::resource('/penawaran', 'PenawaranController');
+
+    // data master
+    Route::resource('/jenis-kapal', 'JenisKapalController')
+        ->middleware('role:' . RoleEnum::$biayaKalkulasi);
+    Route::resource('/satuan', 'SatuanController')
+        ->middleware('role:' . RoleEnum::$biayaKalkulasi);
+    Route::resource('/kategori-pekerjaan', 'KategoriPekerjaanController')
+        ->middleware('role:' . RoleEnum::$biayaKalkulasi);
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Enums\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\JenisKapal;
 use App\Kapal;
@@ -11,6 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class KapalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi)
+            ->only(['index', 'show']);
+
+        $this->middleware('role:' . RoleEnum::$managerProduksi)
+            ->except(['index', 'show']);
+    }
+
     public function index()
     {
         $kapal = Kapal::where('perusahaan_id', Auth::user()->perusahaan_accessor->id)->get();

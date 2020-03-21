@@ -4,7 +4,7 @@ namespace App\Enums;
 
 class RoleEnum
 {
-    public static $admin = 'admin'; // biaya kalkulasi
+    public static $biayaKalkulasi = 'biaya kalkulasi'; // biaya kalkulasi
     public static $managerProduksi = 'manager produksi';
     public static $owner = 'owner';
 }
