@@ -112,7 +112,7 @@
                         <td colspan="2">Rp {{ currency_formatter($transaksi->total_biaya) }}</td>
                     </tr>
                     @if (isset($transaksi->penawaran))
-                        @if (optional($transaksi->penawaran)->status == 'disetujui')
+                        @if (optional($transaksi->penawaran)->verified == 'disetujui')
                             <tr>
                                 <td colspan="4" class="text-right">Jumlah Penawaran (%)</td>
                                 <td colspan="2">{{ $transaksi->penawaran->jumlah_penawaran }}%</td>
