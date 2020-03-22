@@ -15,20 +15,25 @@ class TransaksiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi)
+        $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
             ->only(['index', 'show']);
-        $this->middleware('role:' . RoleEnum::$managerProduksi)
+        $this->middleware('role:' . RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
             ->except(['index', 'show']);
     }
 
     public function index()
     {
-        $user = Auth::user();
-        $transaksi = Perbaikan::with(['kapal.perusahaan', 'kategoriPekerjaan.uraianPekerjaan'])
-            ->whereHas('kapal', function (Builder $query) use ($user){
-                $query->where('perusahaan_id', $user->perusahaan_accessor->id);
-            })
-            ->get();
+
+        if (Auth::user()->hasRole(RoleEnum::$biayaKalkulasi)) {
+            $transaksi = Perbaikan::all();
+        } else {
+            $user = Auth::user();
+            $transaksi = Perbaikan::with(['kapal.perusahaan', 'kategoriPekerjaan.uraianPekerjaan'])
+                ->whereHas('kapal', function (Builder $query) use ($user){
+                    $query->where('perusahaan_id', $user->perusahaan_accessor->id);
+                })
+                ->get();
+        }
 
         return view('dashboard.transaksi.index', compact('transaksi'));
     }

@@ -14,16 +14,21 @@ class KapalController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi)
+        $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
             ->only(['index', 'show']);
 
-        $this->middleware('role:' . RoleEnum::$managerProduksi)
+        $this->middleware('role:' . RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
             ->except(['index', 'show']);
     }
 
     public function index()
     {
-        $kapal = Kapal::where('perusahaan_id', Auth::user()->perusahaan_accessor->id)->get();
+        if (Auth::user()->hasRole(RoleEnum::$biayaKalkulasi)) {
+            $kapal = Kapal::all();
+        } else {
+            $kapal = Kapal::where('perusahaan_id', Auth::user()->perusahaan_accessor->id)->get();
+        }
+
         return view('dashboard.kapal.index', compact('kapal'));
     }
 

@@ -36,13 +36,14 @@
                         <td class="text-center">
 
                             <div class="row">
-                                @hasanyrole(\App\Enums\RoleEnum::$owner.'|'.\App\Enums\RoleEnum::$managerProduksi)
+{{--                                @hasanyrole(\App\Enums\RoleEnum::$owner.'|'.\App\Enums\RoleEnum::$managerProduksi)--}}
                                 <div class="col-md-4">
                                     <a href="{{ route('dashboard.transaksi.show', $item->id) }}" class="btn btn-success btn-block">Detail</a>
                                 </div>
-                                @endhasanyrole
+{{--                                @endhasanyrole--}}
 
-                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)
+                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi.'|'.\App\Enums\RoleEnum::$biayaKalkulasi)
+{{--                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)--}}
                                 <div class="col-md-4">
                                     <a href="{{ route('dashboard.transaksi.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
                                 </div>

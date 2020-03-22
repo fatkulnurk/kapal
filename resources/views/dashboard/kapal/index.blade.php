@@ -33,13 +33,14 @@
                         <td>{{ $item->jenis_kapal }}</td>
                         <td class="text-center">
                             <div class="row">
-                                @hasanyrole(\App\Enums\RoleEnum::$owner.'|'.\App\Enums\RoleEnum::$managerProduksi)
+{{--                                @hasanyrole(\App\Enums\RoleEnum::$owner.'|'.\App\Enums\RoleEnum::$managerProduksi)--}}
                                 <div class="col-md-4">
                                     <a href="{{ route('dashboard.kapal.show', $item->id) }}" class="btn btn-success btn-block">Detail</a>
                                 </div>
-                                @endhasanyrole
+{{--                                @endhasanyrole--}}
 
-                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)
+{{--                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)--}}
+                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi.'|'.\App\Enums\RoleEnum::$biayaKalkulasi)
                                 <div class="col-md-4">
                                     <a href="{{ route('dashboard.kapal.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
                                 </div>
