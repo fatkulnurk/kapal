@@ -156,7 +156,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Total Biaya Sekarang</label>
-                            <input class="form-control" type="text" value="Rp {{ currency_formatter($total) }}" disabled>
+                            <input class="form-control" type="text" value="Rp {{ currency_formatter($transaksi->total_biaya) }}" disabled>
                         </div>
                         <div class="form-group">
                             <label>Jumlah Penawaran</label>
