@@ -138,11 +138,13 @@
                     </tbody>
                 </table>
             </div>
-            @hasanyrole(\App\Enums\RoleEnum::$owner)
-            <div class="form-group">
-                <button class="btn btn-primary btn-success btn-block" data-toggle="modal" data-target="#modalPenawaran">Ajukan Penawaran</button>
-            </div>
-            @endhasanyrole
+            @if (!isset($transaksi->penawaran))
+                @hasanyrole(\App\Enums\RoleEnum::$owner)
+                <div class="form-group">
+                    <button class="btn btn-primary btn-success btn-block" data-toggle="modal" data-target="#modalPenawaran">Ajukan Penawaran</button>
+                </div>
+                @endhasanyrole
+            @endif
         </div>
     </div>
 
@@ -166,11 +168,15 @@
                         <div class="form-group">
                             <label>Jumlah Penawaran</label>
                             <div class="input-group mb-3">
-                                <input min="0" max="100" name="jumlah_penawaran" class="form-control" type="number" placeholder="masukan jumlah penawaran dalam persen (min 0 & max 100)" required autofocus>
+                                <input id="penawaran" min="0" max="100" name="jumlah_penawaran" class="form-control" type="number" placeholder="masukan jumlah penawaran dalam persen (min 0 & max 100)" required autofocus>
                                 <div class="input-group-append">
                                     <span class="input-group-text">%</span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Setelah Penawaran</label>
+                            <input id="total_setelah_count" class="form-control" type="text" value="Rp {{ currency_formatter($transaksi->total_biaya) }}" disabled>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -182,3 +188,16 @@
         </div>
     </div>
 @endsection
+@push('javascript')
+    <script !src="">
+        $('#penawaran').on('input', function() {
+            var total = {{ $transaksi->total_biaya }};
+            var value = $(this).val();
+            var total = total - ((total * value) / 100)
+
+            $('#total_setelah_count').val("Rp " + total)
+
+            // $(this).next().stop(true, true).fadeIn(0).html('[input event fired!]: ' + $(this).val()).fadeOut(2000);
+        });
+    </script>
+@endpush
