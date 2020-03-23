@@ -8,11 +8,11 @@
         <div class="card-header">
             <h3 class="card-title">@yield('title')</h3>
 
-            @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)
+{{--            @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)--}}
             <div class="card-tools">
                 <a href="{{ route('dashboard.kapal.create') }}" class="btn btn-primary">Tambah Data</a>
             </div>
-            @endhasanyrole
+{{--            @endhasanyrole--}}
         </div>
         <div class="card-body">
 
@@ -40,7 +40,7 @@
 {{--                                @endhasanyrole--}}
 
 {{--                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)--}}
-                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi.'|'.\App\Enums\RoleEnum::$biayaKalkulasi)
+{{--                                @hasanyrole(\App\Enums\RoleEnum::$managerProduksi.'|'.\App\Enums\RoleEnum::$biayaKalkulasi)--}}
                                 <div class="col-md-4">
                                     <a href="{{ route('dashboard.kapal.edit', $item->id) }}" class="btn btn-info btn-block">Edit</a>
                                 </div>
@@ -51,7 +51,7 @@
                                         <button class="btn btn-danger btn-block" onclick="submitForm(event)">Hapus</button>
                                     </form>
                                 </div>
-                                @endhasanyrole
+{{--                                @endhasanyrole--}}
                             </div>
                         </td>
                     </tr>

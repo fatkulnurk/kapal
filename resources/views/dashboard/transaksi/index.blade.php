@@ -8,7 +8,7 @@
         <div class="card-header">
             <h3 class="card-title">@yield('title')</h3>
 
-            @hasanyrole(\App\Enums\RoleEnum::$managerProduksi)
+            @hasanyrole(\App\Enums\RoleEnum::$managerProduksi.'|'.\App\Enums\RoleEnum::$biayaKalkulasi)
             <div class="card-tools">
                 <a href="{{ route('dashboard.transaksi.create') }}" class="btn btn-primary">Tambah Data</a>
             </div>

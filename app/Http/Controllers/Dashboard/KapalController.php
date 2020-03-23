@@ -14,11 +14,11 @@ class KapalController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
-            ->only(['index', 'show']);
-
-        $this->middleware('role:' . RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
-            ->except(['index', 'show']);
+//        $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
+//            ->only(['index', 'show']);
+//
+//        $this->middleware('role:' . RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
+//            ->except(['index', 'show']);
     }
 
     public function index()

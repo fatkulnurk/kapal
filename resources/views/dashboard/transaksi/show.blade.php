@@ -14,6 +14,11 @@
             <div class="form-group">
                 <table class="table table-borderless">
                     <tr>
+                        <td style="width: 170px">NOMOR TRANSAKSI</td>
+                        <td style="width: 10px">:</td>
+                        <td>{{ $transaksi->nomor_transaksi }}</td>
+                    </tr>
+                    <tr>
                         <td style="width: 170px">NAMA PERUSAHAAN</td>
                         <td style="width: 10px">:</td>
                         <td>{{ $transaksi->kapal->perusahaan->nama }}</td>

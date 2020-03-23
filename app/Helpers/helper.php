@@ -22,3 +22,24 @@ if (!function_exists('random_perbaikan')) {
         return md5($data);
     }
 }
+
+if (!function_exists('role_owner')) {
+    function role_owner()
+    {
+        return \App\Enums\RoleEnum::$owner;
+    }
+}
+
+if (!function_exists('role_biaya_kalkulasi')) {
+    function role_biaya_kalkulasi()
+    {
+        return \App\Enums\RoleEnum::$biayaKalkulasi;
+    }
+}
+
+if (!function_exists('role_manager_produksi')) {
+    function role_manager_produksi()
+    {
+        return \App\Enums\RoleEnum::$managerProduksi;
+    }
+}

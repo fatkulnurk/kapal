@@ -17,8 +17,10 @@ class TransaksiController extends Controller
     {
         $this->middleware('role:' . RoleEnum::$owner.'|'.RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
             ->only(['index', 'show']);
+//            ->only(['index', 'show']);
         $this->middleware('role:' . RoleEnum::$managerProduksi.'|'.RoleEnum::$biayaKalkulasi)
             ->except(['index', 'show']);
+//            ->except(['index', 'show']);
     }
 
     public function index()
