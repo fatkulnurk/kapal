@@ -138,13 +138,11 @@
                     </tbody>
                 </table>
             </div>
-            @if (!isset($transaksi->penawaran))
                 @hasanyrole(\App\Enums\RoleEnum::$owner)
                 <div class="form-group">
                     <button class="btn btn-primary btn-success btn-block" data-toggle="modal" data-target="#modalPenawaran">Ajukan Penawaran</button>
                 </div>
                 @endhasanyrole
-            @endif
         </div>
     </div>
 
@@ -152,7 +150,10 @@
     <div class="modal fade" tabindex="-1" id="modalPenawaran">
         <div class="modal-dialog">
             <div class="modal-content">
+
+                @if (!isset($transaksi->penawaran))
                 <form action="{{ route('dashboard.transaksi.ajukan-penawaran.store', $transaksi->id) }}" method="post">
+                    @endif
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title">Ajukan Penawaran</h5>
@@ -181,9 +182,15 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan Penawaran</button>
+                        <button type="submit" class="btn btn-primary"
+                        @if (!isset($transaksi->penawaran)) disabled
+                            @endif>Simpan Penawaran</button>
                     </div>
+
+                    @if (!isset($transaksi->penawaran))
                 </form>
+
+                @endif
             </div>
         </div>
     </div>
