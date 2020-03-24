@@ -140,7 +140,7 @@
             </div>
                 @hasanyrole(\App\Enums\RoleEnum::$owner)
                 <div class="form-group">
-                    <button class="btn btn-primary btn-success btn-block" data-toggle="modal" data-target="#modalPenawaran">Ajukan Penawaran</button>
+                    <button class="btn btn-primary btn-success btn-block @if (isset($transaksi->penawaran)) disabled" disabled @else " @endif data-toggle="modal" data-target="#modalPenawaran">Ajukan Penawaran</button>
                 </div>
                 @endhasanyrole
         </div>
