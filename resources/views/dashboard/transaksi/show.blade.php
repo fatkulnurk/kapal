@@ -169,7 +169,10 @@
                         <div class="form-group">
                             <label>Jumlah Penawaran</label>
                             <div class="input-group mb-3">
-                                <input id="penawaran" min="0" max="100" name="jumlah_penawaran" class="form-control" type="number" placeholder="masukan jumlah penawaran dalam persen (min 0 & max 100)" required autofocus>
+                                <input id="penawaran" min="0" max="100" name="jumlah_penawaran" class="form-control" type="number"
+                                       @if (isset($transaksi->penawaran))
+                                       value="{{ $transaksi->penawaran->jumlah_penawaran }}"
+                                       @endif placeholder="masukan jumlah penawaran dalam persen (min 0 & max 100)" required autofocus>
                                 <div class="input-group-append">
                                     <span class="input-group-text">%</span>
                                 </div>
@@ -177,19 +180,28 @@
                         </div>
                         <div class="form-group">
                             <label>Setelah Penawaran</label>
-                            <input id="total_setelah_count" class="form-control" type="text" value="Rp {{ currency_formatter($transaksi->total_biaya) }}" disabled>
+                            <input id="total_setelah_count" class="form-control" type="text"
+                                   @if (isset($transaksi->penawaran))
+                                   value="Rp {{ currency_formatter($transaksi->penawaran->total_setelah_penawaran) }}"
+                                   @else
+                                   value="Rp {{ currency_formatter($transaksi->total_biaya) }}"
+                                   @endif
+
+                                   disabled>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary"
-                        @if (!isset($transaksi->penawaran)) disabled
+                        <button type="submit" class="btn btn-primary
+
+                        @if (isset($transaksi->penawaran)) disabled
+                            @endif"
+                        @if (isset($transaksi->penawaran)) disabled
                             @endif>Simpan Penawaran</button>
                     </div>
 
                     @if (!isset($transaksi->penawaran))
                 </form>
-
                 @endif
             </div>
         </div>
