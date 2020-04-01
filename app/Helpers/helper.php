@@ -19,7 +19,7 @@ if (!function_exists('random_perbaikan')) {
             $data = \Illuminate\Support\Str::random(30);
         }
 
-        return md5($data);
+        return \Illuminate\Support\Str::substr(md5($data), 0, 10);
     }
 }
 

@@ -129,7 +129,7 @@
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
-                            <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
+                            <img class="rounded-circle img-fluid" src="{{ asset('images/kapal_b.jpg') }}" alt="">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
