@@ -18,6 +18,7 @@ class PenawaranController extends Controller
     public function index()
     {
         $penawaran = Penawaran::with(['perbaikan.kapal', 'perbaikan.kategoriPekerjaan.uraianPekerjaan'])
+            ->has('perbaikan')
             ->where('perusahaan_id', Auth::user()->perusahaan_accessor->id)
             ->get();
 
