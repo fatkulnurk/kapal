@@ -9,4 +9,6 @@ Route::group([
     Route::get('/satuan', 'SatuanController');
     Route::get('/kategori-pekerjaan', 'KategoriPekerjaanController');
     Route::get('/jenis-kapal', 'JenisKapalController');
+    Route::get('/perusahaan', 'PerusahaanController');
+    Route::get('/user', 'UserController');
 });

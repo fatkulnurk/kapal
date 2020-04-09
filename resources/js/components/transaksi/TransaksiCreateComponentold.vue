@@ -1,11 +1,6 @@
 <template>
     <div>
         <div class="form-group">
-            <label>Pilih Perusahaan</label>
-            <v-select label="nama" :options="perusahaan" v-model="selectedPerusahaan"></v-select>
-        </div>
-
-        <div class="form-group">
             <label>Pilih Kapal</label>
             <v-select label="nama_kapal" :options="kapal" :reduce="kapal => kapal" v-model="kapalSelected"></v-select>
             <input type="hidden" name="kapal_id" :value="kapalSelected.id">
@@ -117,11 +112,6 @@
         name: "TransaksiCreateComponent",
         data() {
             return {
-                user: {
-
-                },
-                perusahaan: [],
-                selectedPerusahaan: [],
                 uraian_pekerjaan: [
                     {
                         uraian: [
@@ -160,28 +150,6 @@
         },
         mounted () {
             window.axios
-                .get('/api/web/user')
-                .then(response => {
-                    this.user = response.data
-                    console.log(this.user)
-                })
-                .catch(error => {
-                    console.log(error)
-                    this.errored = true
-                })
-
-            window.axios
-                .get('/api/web/perusahaan')
-                .then(response => {
-                    this.perusahaan = response.data
-                    console.log(this.perusahaan)
-                })
-                .catch(error => {
-                    console.log(error)
-                    this.errored = true
-                })
-
-            window.axios
                 .get('/api/web/kapal')
                 .then(response => {
                     this.kapal = response.data
@@ -211,24 +179,6 @@
             },
             tambahUraian(key) {
                 this.uraian_pekerjaan[key].uraian.push('')
-            },
-            getPerusahaan() {
-                window.axios
-                    .get('/api/web/kapal?perusahaan_id=' + this.selectedPerusahaan.id)
-                    .then(response => {
-                        this.kapal = response.data
-                        console.log(this.kapal)
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        this.errored = true
-                    })
-
-            }
-        },
-        watch: {
-            selectedPerusahaan: function(val) {
-                this.getPerusahaan()
             }
         }
     }
