@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => 'biaya kalkulasi',
-                'email' => 'biaya_kalkulasi@example.com',
+                'email' => 'bagian_kalkulasi@example.com',
                 'email_verified_at' => \Illuminate\Support\Carbon::now(),
                 'password' => \Illuminate\Support\Facades\Hash::make('12345678')
             ],

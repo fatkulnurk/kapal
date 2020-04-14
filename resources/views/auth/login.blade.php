@@ -21,7 +21,7 @@
                     </div>
                     <div class="alert alert-warning">
                         Biaya Kalkulasi <br>
-                        email: biaya_kalkulasi@example.com <br>
+                        email: bagian_kalkulasi@example.com <br>
                         password: 12345678
                     </div>
                     <div class="alert alert-info">
