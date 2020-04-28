@@ -22,12 +22,24 @@ class AjukanPenawaranController extends Controller
                 ->with('error', 'Penawaran gagal, angka harus 1 sampai 100');
         }
 
-        $penawaran = Penawaran::create([
-            'perbaikan_id' => $transactionID,
-            'jumlah_penawaran' => $request->input('jumlah_penawaran'),
-            'user' => collect(Auth::user())->toArray(),
-            'perusahaan_id' => Auth::user()->perusahaan_accessor->id
-        ]);
+        //
+        $penawaran = Penawaran::where('perbaikan_id', $transactionID)
+            ->first();
+
+        if (blank($penawaran)) {
+            Penawaran::create([
+                'perbaikan_id' => $transactionID,
+                'jumlah_penawaran' => $request->input('jumlah_penawaran'),
+                'user' => collect(Auth::user())->toArray(),
+                'perusahaan_id' => Auth::user()->perusahaan_accessor->id
+            ]);
+        } else {
+            $penawaran->jumlah_penawaran = $request->input('jumlah_penawaran');
+            $penawaran->user  = collect(Auth::user())->toArray();
+            $penawaran->perusahaan_id = Auth::user()->perusahaan_accessor->id;
+            $penawaran->verified = 'diproses';
+            $penawaran->save();
+        }
 
         return redirect()->route('dashboard.penawaran.index')
             ->with('success', 'Penawaran berhasil disimpan, tunggu untuk di konfirmasi');

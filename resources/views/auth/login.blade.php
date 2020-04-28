@@ -14,21 +14,6 @@
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
 
-                    <div class="alert alert-danger">
-                        Owner <br>
-                        email: owner@example.com <br>
-                        password: 12345678
-                    </div>
-                    <div class="alert alert-warning">
-                        Biaya Kalkulasi <br>
-                        email: bagian_kalkulasi@example.com <br>
-                        password: 12345678
-                    </div>
-                    <div class="alert alert-info">
-                        manager produksi <br>
-                        email: manager_produksi@example.com <br>
-                        password: 12345678
-                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
