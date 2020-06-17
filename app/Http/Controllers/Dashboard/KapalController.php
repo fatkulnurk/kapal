@@ -124,7 +124,12 @@ class KapalController extends Controller
 
     public function destroy($id, Request $request)
     {
-        $kapal = Kapal::findOrFail($id);
+        $kapal = Kapal::with('perbaikan.penawaran')->findOrFail($id);
+
+        foreach ($kapal->perbaikan as $perbaikan) {
+            optional($perbaikan->penawaran)->delete();
+            $perbaikan->delete();
+        }
         $kapal->delete();
         return redirect()
             ->route('dashboard.kapal.index')

@@ -31,7 +31,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nomor_transaksi }}</td>
-                        <td>{{ $item->kapal->nama_kapal }}</td>
+                        <td>{{ optional($item->kapal)->nama_kapal }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td class="text-center">
 
