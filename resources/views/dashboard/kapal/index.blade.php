@@ -22,6 +22,7 @@
                     <th style="width: 20px">No</th>
                     <th>Nama Kapal</th>
                     <th>Jenis Kapal</th>
+                    <th>Tanggal Dibuat</th>
                     <th style="width: 350px">Opsi</th>
                 </tr>
                 </thead>
@@ -31,6 +32,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->nama_kapal }}</td>
                         <td>{{ $item->jenis_kapal }}</td>
+                        <td>{{ \Illuminate\Support\Carbon::parse($item->create_at)->format('d-m-Y') }}</td>
                         <td class="text-center">
                             <div class="row">
 {{--                                @hasanyrole(\App\Enums\RoleEnum::$owner.'|'.\App\Enums\RoleEnum::$managerProduksi)--}}

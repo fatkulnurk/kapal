@@ -35,7 +35,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td><a href="{{ route('dashboard.transaksi.show', $item->perbaikan->id) }}">{{ $item->perbaikan->nomor_transaksi }}</a></td>
                         <td>{{ optional($item->perbaikan->kapal)->nama_kapal }}</td>
-                        <td>{{ optional($item->perbaikan)->total_biaya }}</td>
+                        <td>Rp {{ currency_formatter(optional($item->perbaikan)->total_biaya) }}</td>
                         <td>{{ $item->jumlah_penawaran }}%</td>
                         <td>{{ $item->verified }}</td>
                         <td>{{ $item->created_at }}</td>

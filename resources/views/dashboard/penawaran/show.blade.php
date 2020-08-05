@@ -16,17 +16,17 @@
                     <tr>
                         <td style="width: 170px">NAMA PERUSAHAAN</td>
                         <td style="width: 10px">:</td>
-                        <td>{{ $penawaran->perbaikan->kapal->perusahaan->nama }}</td>
+                        <td>{{ optional(optional(optional($penawaran->perbaikan)->kapal)->perusahaan)->nama }}</td>
                     </tr>
                     <tr style="border-top: solid #e2e3e5 1px">
                         <td style="width: 170px">NAMA KAPAL</td>
                         <td style="width: 10px">:</td>
-                        <td>{{ $penawaran->perbaikan->kapal->nama_kapal }}</td>
+                        <td>{{ optional($penawaran->perbaikan->kapal)->nama_kapal }}</td>
                     </tr>
                     <tr style="border-top: solid #e2e3e5 1px">
                         <td>JENIS KAPAL</td>
                         <td>:</td>
-                        <td>{{ $penawaran->perbaikan->kapal->jenis_kapal }}</td>
+                        <td>{{ optional($penawaran->perbaikan->kapal)->jenis_kapal }}</td>
                     </tr>
                     <tr style="border-top: solid #e2e3e5 1px">
                         <td>UKURAN UTAMA</td>
@@ -36,27 +36,27 @@
                                 <tr>
                                     <td style="width: 75px">Panjang</td>
                                     <td style="width: 5px">:</td>
-                                    <td>{{ $penawaran->perbaikan->kapal->ukuran_panjang }}</td>
+                                    <td>{{ optional($penawaran->perbaikan->kapal)->ukuran_panjang }}</td>
                                 </tr>
                                 <tr style="border-top: solid #e2e3e5 1px">
                                     <td>Lebar</td>
                                     <td>:</td>
-                                    <td>{{ $penawaran->perbaikan->kapal->ukuran_lebar }}</td>
+                                    <td>{{ optional($penawaran->perbaikan->kapal)->ukuran_lebar }}</td>
                                 </tr>
                                 <tr style="border-top: solid #e2e3e5 1px">
                                     <td>Tinggi</td>
                                     <td>:</td>
-                                    <td>{{ $penawaran->perbaikan->kapal->ukuran_tinggi }}</td>
+                                    <td>{{ optional($penawaran->perbaikan->kapal)->ukuran_tinggi }}</td>
                                 </tr>
                                 <tr style="border-top: solid #e2e3e5 1px">
                                     <td>Sarat</td>
                                     <td>:</td>
-                                    <td>{{ $penawaran->perbaikan->kapal->ukuran_sarat }}</td>
+                                    <td>{{ optional($penawaran->perbaikan->kapal)->ukuran_sarat }}</td>
                                 </tr>
                                 <tr style="border-top: solid #e2e3e5 1px">
                                     <td>GT</td>
                                     <td>:</td>
-                                    <td>{{ $penawaran->perbaikan->kapal->ukuran_gt }}</td>
+                                    <td>{{ optional($penawaran->perbaikan->kapal)->ukuran_gt }}</td>
                                 </tr>
                             </table>
                         </td>

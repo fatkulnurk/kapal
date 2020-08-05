@@ -209,6 +209,11 @@
             </div>
 
             <div class="form-group">
+                <label>Tanggal Dibuat</label>
+                <input type="text" class="form-control" value="{{ \Illuminate\Support\Carbon::parse($item->create_at)->format('d-m-Y') }}" disabled>
+            </div>
+
+            <div class="form-group">
                 <a href="{{ route('dashboard.kapal.index') }}" class="btn btn-primary btn-block">Kembali</a>
             </div>
         </div>
