@@ -6,98 +6,98 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">@yield('title')</h3>
-
             <div class="card-tools">
+                <button type="button" class="btn btn-primary" id='btn' value='Print' onclick='printDiv();'>Print PDF</button>
             </div>
         </div>
         <div class="card-body">
-            <div class="form-group">
-                <table class="table table-borderless">
-                    <tr>
-                        <td style="width: 170px">NOMOR TRANSAKSI</td>
-                        <td style="width: 10px">:</td>
-                        <td>{{ $transaksi->nomor_transaksi }}</td>
-                    </tr>
-                    <tr>
-                        <td style="width: 170px">NAMA PERUSAHAAN</td>
-                        <td style="width: 10px">:</td>
-                        <td>{{ $transaksi->kapal->perusahaan->nama }}</td>
-                    </tr>
-                    <tr style="border-top: solid #e2e3e5 1px">
-                        <td style="width: 170px">NAMA KAPAL</td>
-                        <td style="width: 10px">:</td>
-                        <td>{{ $transaksi->kapal->nama_kapal }}</td>
-                    </tr>
-                    <tr style="border-top: solid #e2e3e5 1px">
-                        <td>JENIS KAPAL</td>
-                        <td>:</td>
-                        <td>{{ $transaksi->kapal->jenis_kapal }}</td>
-                    </tr>
-                    <tr style="border-top: solid #e2e3e5 1px">
-                        <td>UKURAN UTAMA</td>
-                        <td>:</td>
-                        <td>
-                            <table class="table">
-                                <tr>
-                                    <td style="width: 75px">Panjang</td>
-                                    <td style="width: 5px">:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_panjang }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>Lebar</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_lebar }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>Tinggi</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_tinggi }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>Sarat</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_sarat }}</td>
-                                </tr>
-                                <tr style="border-top: solid #e2e3e5 1px">
-                                    <td>GT</td>
-                                    <td>:</td>
-                                    <td>{{ $transaksi->kapal->ukuran_gt }}</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <hr>
-            <h5>Uraian Pekerjaan</h5>
-
-            <div class="form-group">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col" style="width: 20px">No</th>
-                        <th scope="col">Uraian - Pekerjaan</th>
-                        <th scope="col" colspan="2">Volume</th>
-                        <th scope="col">Harga Satuan</th>
-                        <th scope="col">Biaya</th>
-                    </tr>
-                    </thead>
-                    <?php $total = 0; ?>
-                    @foreach($transaksi->kategoriPekerjaan as $kategoriPekerjaan)
+            <div id='DivIdToPrint'>
+                <div class="form-group">
+                    <table class="table table-borderless">
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                {{ \Illuminate\Support\Str::upper($kategoriPekerjaan->nama) }}
-                                @if (!blank($kategoriPekerjaan->deskripsi))
-                                    <br>
-                                    {{ $kategoriPekerjaan->deskripsi }}
-                                @endif
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td style="width: 170px">NOMOR TRANSAKSI</td>
+                            <td style="width: 10px">:</td>
+                            <td>{{ $transaksi->nomor_transaksi }}</td>
                         </tr>
+                        <tr>
+                            <td style="width: 170px">NAMA PERUSAHAAN</td>
+                            <td style="width: 10px">:</td>
+                            <td>{{ $transaksi->kapal->perusahaan->nama }}</td>
+                        </tr>
+                        <tr style="border-top: solid #e2e3e5 1px">
+                            <td style="width: 170px">NAMA KAPAL</td>
+                            <td style="width: 10px">:</td>
+                            <td>{{ $transaksi->kapal->nama_kapal }}</td>
+                        </tr>
+                        <tr style="border-top: solid #e2e3e5 1px">
+                            <td>JENIS KAPAL</td>
+                            <td>:</td>
+                            <td>{{ $transaksi->kapal->jenis_kapal }}</td>
+                        </tr>
+                        <tr style="border-top: solid #e2e3e5 1px">
+                            <td>UKURAN UTAMA</td>
+                            <td>:</td>
+                            <td>
+                                <table class="table">
+                                    <tr>
+                                        <td style="width: 75px">Panjang</td>
+                                        <td style="width: 5px">:</td>
+                                        <td>{{ $transaksi->kapal->ukuran_panjang }}</td>
+                                    </tr>
+                                    <tr style="border-top: solid #e2e3e5 1px">
+                                        <td>Lebar</td>
+                                        <td>:</td>
+                                        <td>{{ $transaksi->kapal->ukuran_lebar }}</td>
+                                    </tr>
+                                    <tr style="border-top: solid #e2e3e5 1px">
+                                        <td>Tinggi</td>
+                                        <td>:</td>
+                                        <td>{{ $transaksi->kapal->ukuran_tinggi }}</td>
+                                    </tr>
+                                    <tr style="border-top: solid #e2e3e5 1px">
+                                        <td>Sarat</td>
+                                        <td>:</td>
+                                        <td>{{ $transaksi->kapal->ukuran_sarat }}</td>
+                                    </tr>
+                                    <tr style="border-top: solid #e2e3e5 1px">
+                                        <td>GT</td>
+                                        <td>:</td>
+                                        <td>{{ $transaksi->kapal->ukuran_gt }}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+                <h5>Uraian Pekerjaan</h5>
+                <div class="form-group">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col" style="width: 20px">No</th>
+                            <th scope="col">Uraian - Pekerjaan</th>
+                            <th scope="col" colspan="2">Volume</th>
+                            <th scope="col">Harga Satuan</th>
+                            <th scope="col">Biaya</th>
+                        </tr>
+                        </thead>
+                        <?php $total = 0; ?>
+                        @foreach($transaksi->kategoriPekerjaan as $kategoriPekerjaan)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    {{ \Illuminate\Support\Str::upper($kategoriPekerjaan->nama) }}
+                                    @if (!blank($kategoriPekerjaan->deskripsi))
+                                        <br>
+                                        {{ $kategoriPekerjaan->deskripsi }}
+                                    @endif
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                             @foreach(optional($kategoriPekerjaan)->uraianPekerjaan as $uraianPekerjaan)
                                 <tr>
                                     <td></td>
@@ -107,42 +107,41 @@
                                     <td>{{ $uraianPekerjaan->volume_nilai }}</td>
                                     <td>{{ $uraianPekerjaan->volume_satuan }}</td>
                                     <td>{{ currency_formatter($uraianPekerjaan->harga) }}</td>
-<!--                                    --><?php //$total += ($uraianPekerjaan->volume_nilai * $uraianPekerjaan->harga); ?>
+                                    <?php //$total += ($uraianPekerjaan->volume_nilai * $uraianPekerjaan->harga); ?>
                                     <td>{{ currency_formatter(($uraianPekerjaan->volume_nilai * $uraianPekerjaan->harga)) }}</td>
                                 </tr>
                             @endforeach
-                    @endforeach
-                    <tr>
-                        <td colspan="4" class="text-right">Total Biaya</td>
-                        <td colspan="2">Rp {{ currency_formatter($transaksi->total_biaya) }}</td>
-                    </tr>
-                    @if (isset($transaksi->penawaran))
-                        @if (optional($transaksi->penawaran)->verified == 'disetujui')
-                            <tr>
-                                <td colspan="4" class="text-right">Jumlah Penawaran (%)</td>
-                                <td colspan="2">{{ $transaksi->penawaran->jumlah_penawaran }}%</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="text-right">Jumlah Penawaran (Rp)</td>
-                                <td colspan="2">Rp {{ currency_formatter($transaksi->penawaran->jumlah_penawaran_nominal) }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="text-right">Total Biaya (setelah penawaran)</td>
-                                <td colspan="2">Rp {{ currency_formatter($transaksi->harga_setelah_penawaran) }}</td>
-                            </tr>
+                        @endforeach
+                        <tr>
+                            <td colspan="4" class="text-right">Total Biaya</td>
+                            <td colspan="2">Rp {{ currency_formatter($transaksi->total_biaya) }}</td>
+                        </tr>
+                        @if (isset($transaksi->penawaran))
+                            @if (optional($transaksi->penawaran)->verified == 'disetujui')
+                                <tr>
+                                    <td colspan="4" class="text-right">Jumlah Penawaran (%)</td>
+                                    <td colspan="2">{{ $transaksi->penawaran->jumlah_penawaran }}%</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right">Jumlah Penawaran (Rp)</td>
+                                    <td colspan="2">Rp {{ currency_formatter($transaksi->penawaran->jumlah_penawaran_nominal) }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="text-right">Total Biaya (setelah penawaran)</td>
+                                    <td colspan="2">Rp {{ currency_formatter($transaksi->harga_setelah_penawaran) }}</td>
+                                </tr>
+                            @endif
                         @endif
-                    @endif
-
-
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-                @hasanyrole(\App\Enums\RoleEnum::$owner)
-                <div class="form-group">
-                    <button class="btn btn-primary btn-success btn-block" {{--- @if (isset($transaksi->penawaran)) disabled" disabled @else " @endif ---}} data-toggle="modal" data-target="#modalPenawaran">Ajukan Penawaran</button>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-                @endhasanyrole
+            </div>
+            @hasanyrole(\App\Enums\RoleEnum::$owner)
+            <div class="form-group">
+                <button class="btn btn-primary btn-success btn-block" {{--- @if (isset($transaksi->penawaran)) disabled" disabled @else " @endif ---}} data-toggle="modal" data-target="#modalPenawaran">Ajukan Penawaran</button>
+            </div>
+            @endhasanyrole
         </div>
     </div>
 
@@ -207,5 +206,30 @@
 
             // $(this).next().stop(true, true).fadeIn(0).html('[input event fired!]: ' + $(this).val()).fadeOut(2000);
         });
+        // window.print();
+        function printDiv()
+        {
+            var divToPrint=document.getElementById('DivIdToPrint');
+            var htmlToPrint = '' +
+                '<style type="text/css">' +
+                'table, td, th {' +
+                'border: 1px solid #ddd;' +
+                'text-align: left;' +
+                '}' +
+                'table {' +
+                'border-collapse: collapse;' +
+                'width: 100%;' +
+                '}' +
+                'th, td {' +
+                'padding: 15px;;' +
+                '}' +
+                '</style>';
+            htmlToPrint += divToPrint.outerHTML;
+            newWin = window.open("");
+            newWin.document.write('<h3>Informasi Transaksi</h3>');
+            newWin.document.write(htmlToPrint);
+            newWin.print();
+            newWin.close();
+        }
     </script>
 @endpush
